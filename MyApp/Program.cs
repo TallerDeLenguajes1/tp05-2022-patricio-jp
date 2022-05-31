@@ -1,4 +1,5 @@
-﻿do {
+﻿int seguir = 1;
+do {
     Console.Clear();
 
     Console.WriteLine("====== Calculadora V2 ======");
@@ -89,7 +90,12 @@
     Console.WriteLine("Máximo: " + Math.Max(num1, num2) + "\n");
 
     Console.WriteLine("Desea realizar otra operación?\n0. No\n1. Si");
-} while (Console.ReadKey(false).Key != ConsoleKey.D0);
+    entrada = Console.ReadLine();
+    while (!Int32.TryParse(entrada, out seguir) || !(seguir == 0 || seguir == 1)) {
+        Console.WriteLine("Error! Debe ingresar una opción válida");
+        entrada = Console.ReadLine();
+    }
+} while (seguir == 1);
 
 double sumar(double num1, double num2) {
     return num1 + num2;
